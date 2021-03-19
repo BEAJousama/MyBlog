@@ -1,0 +1,28 @@
+<%- include('../partials/heading') -%>
+
+    <div class="container-fluid page-holder bg-cover">
+        <div class="heading">
+            <h1>New Post</h1>
+            <div class="white-divider"></div>
+        </div>
+        <div class="container text-center">
+            <form action="/posts" , method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="title" placeholder="title">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="image" placeholder="image url">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" type="text" name="text" placeholder="text"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary ">Submit</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <%- include('../partials/footer') -%>
