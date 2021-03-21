@@ -5,11 +5,16 @@
                 <h1 class="text-center">Welcome to B-Blog !</h1>
                 <% if (!currentuser){ %>
                     <p class="text-center">Login so you can interact with posts and get answers</p>
-                    <a href="/login" class="btn btn-info">Login</a>
+                    <a href="/login" class="btn btn-dark">Login</a>
                     <%}%>
             </div>
         </div>
-        <div class="container">
+        <div class="text-center heading">
+            <h2>POSTS</h2>
+        </div>
+        <div class="blue-divider"></div>
+        <div class="container border-dark border-left border-right">
+            <div class="text-center"></div>
             <div class="row text-center">
                 <% posts.forEach(function(post){ %>
                     <div class="col-md-4 col-sm-6 col-lg-3">

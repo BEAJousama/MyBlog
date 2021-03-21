@@ -1,18 +1,24 @@
 <%- include('../partials/heading') -%>
-    <div class="container text-center" style="padding:50px;background: white; border-radius:6px;margin:20px auto">
-        <h3 class="my-3">
-            <%= post.title %>
-        </h3>
-
-        <img class="img-thumbnail" src="<%=post.image%>" alt="img item">
-
-        <p class="my-3 ">
-            <%= post.text %>
-        </p>
-
-
-    </div>
     <div class="text-center">
-        <a style="margin: 0px auto;" href="/" class="btn btn-warning">Back to posts</a>
+        <div class="container border-dark border-left border-right" style="padding:50px;background: white; border-radius:6px;margin:20px auto">
+            <h2 class="my-3">
+                <%= post.title %>
+            </h2>
+
+            <img class="img-thumbnail" src="<%=post.image%>" alt="img item">
+
+            <p class="my-3 ">
+                <%- post.text %>
+            </p>
+            <div class="text-center">
+                <a style="margin: 0px auto;" href="/posts/<%=post._id%>/edit" class="btn btn-warning">Update</a>
+            </div>
+
+        </div>
+
+        <a style="margin: 0px auto;" href="/" class="btn btn-dark">Back to posts</a>
+
     </div>
+
+
     <%- include( '../partials/footer') -%>

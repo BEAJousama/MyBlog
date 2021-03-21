@@ -1,6 +1,14 @@
 body {
     font-family: 'Comfortaa', sans-serif;
-    background: #059fcede;
+    background: #fff;
+}
+
+.blue-divider {
+    width: 100px;
+    height: 2px;
+    background: rgba(13, 166, 236, 0.589);
+    margin: 0px auto;
+    margin-bottom: 50px;
 }
 
 .btn {
@@ -26,7 +34,7 @@ body {
 .heading {
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
+    color: #333;
     text-align: center;
     margin: 0px auto;
     padding: 40px

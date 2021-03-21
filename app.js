@@ -123,6 +123,35 @@ app.get('/posts/:id', (req, res) => {
     });
 });
 
+app.get('/posts/:id/edit', (req, res) => {
+    Post.findById(req.params.id, function(err, foundPost) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("posts/edit", { post: foundPost });
+        }
+    });
+});
+
+app.put('/posts/:id', (req, res) => {
+    var post = req.body.post;
+    // var author = {
+    //     id: req.user._id,
+    //     username: req.user.username
+    // };
+    Post.findByIdAndUpdate(req.params.id, post, { useFindAndModify: false }, function(err, updatedCampground) {
+        if (err) {
+            console.log(err);
+        } else {
+
+            // newlycreaed.author.id = req.user._id;
+            // newlycreaed.author.username = req.user.username;
+            // newlycreaed.save();
+            res.redirect("/posts/" + req.params.id);
+        }
+    });
+});
+
 
 
 
