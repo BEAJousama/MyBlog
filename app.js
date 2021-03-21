@@ -135,19 +135,21 @@ app.get('/posts/:id/edit', (req, res) => {
 
 app.put('/posts/:id', (req, res) => {
     var post = req.body.post;
-    // var author = {
-    //     id: req.user._id,
-    //     username: req.user.username
-    // };
     Post.findByIdAndUpdate(req.params.id, post, { useFindAndModify: false }, function(err, updatedCampground) {
         if (err) {
             console.log(err);
         } else {
-
-            // newlycreaed.author.id = req.user._id;
-            // newlycreaed.author.username = req.user.username;
-            // newlycreaed.save();
             res.redirect("/posts/" + req.params.id);
+        }
+    });
+});
+
+app.delete('/posts/:id', (req, res) => {
+    Post.findByIdAndDelete(req.params.id, { useFindAndModify: false }, function(err, updatedCampground) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("/");
         }
     });
 });
