@@ -10,12 +10,15 @@
             <p class="my-3 ">
                 <%- post.text %>
             </p>
-            <div class="text-center">
-                <a style="margin: 0px auto;" href="/posts/<%=post._id%>/edit" class="btn btn-warning">Update</a>
-                <form action="/posts/<%=post._id%>?_method=DELETE" , method="POST">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
+            <%if(currentuser && currentuser.role =="administrator" ){ %>
+                <div class="text-center">
+                    <a style="margin: 0px auto;" href="/posts/<%=post._id%>/edit" class="btn btn-warning">Update</a>
+                    <form class="del-form" action="/posts/<%=post._id%>?_method=DELETE" , method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+
 
         </div>
 

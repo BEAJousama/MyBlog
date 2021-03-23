@@ -30,9 +30,13 @@
                 <li class="nav-item"><a class=" nav-link" href="/">Posts</a></li>
 
                 <% if (currentuser){ %>
-                    <li class="nav-item"><a class="nav-link" href="#"> Welcome <strong><%= currentuser.username%></strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-                    <%}%>
+                    <% if(currentuser.role =="administrator"){ %>
+                        <li class="nav-item"><a class="nav-link" href="#"> Welcome <strong><%= currentuser.role%></strong></a></li>
+                        <%} else{%>
+                            <li class="nav-item"><a class="nav-link" href="#"> Welcome <strong><%= currentuser.username%></strong></a></li>
+                            <%}%>
+                                <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                                <%}%>
             </ul>
         </div>
 

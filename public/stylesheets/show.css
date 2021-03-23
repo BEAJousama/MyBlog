@@ -11,6 +11,10 @@ body {
     margin-bottom: 50px;
 }
 
+.del-form {
+    display: inline;
+}
+
 .btn {
     margin: 10px;
     text-align: center;

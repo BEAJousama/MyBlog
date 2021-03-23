@@ -9,7 +9,8 @@ var userSchema = new mongoose.Schema({
         match: [/.+\@.+\..+/, 'Please fill a valid email address'],
         required: 'Email is required'
     },
-    password: String
+    password: String,
+    role: String
 });
 
 userSchema.plugin(PassportLocalMongoose, { usernameField: 'email' });
