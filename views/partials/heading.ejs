@@ -28,9 +28,6 @@
                 <li class="nav-item"><a class=" nav-link " href="/portfolio">Portfolio</a></li>
                 <li class="nav-item"><a class=" nav-link " href="https://github.com/BEAJousama">Projects</a></li>
                 <li class="nav-item"><a class=" nav-link " href="/">Posts</a></li>
-                <li class="nav-item"><a class=" nav-link " href="/login">Login</a></li>
-
-
 
                 <% if (currentuser){ %>
                     <% if(currentuser.role =="administrator"){ %>
@@ -39,7 +36,9 @@
                             <li class="nav-item"><a class="nav-link" href="#"> Welcome <strong><%= currentuser.username%></strong></a></li>
                             <%}%>
                                 <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-                                <%}%>
+                                <%}else{%>
+                                    <li class="nav-item"><a class=" nav-link " href="/login">Login</a></li>
+                                    <%}%>
             </ul>
         </div>
 
