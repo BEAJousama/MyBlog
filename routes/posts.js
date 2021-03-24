@@ -5,7 +5,7 @@ var express = require("express"),
     middlewareObj = require("../middleware");
 
 
-router.get("/new", (req, res) => {
+router.get("/new", middlewareObj.isLogedin, middlewareObj.IsAdmin, (req, res) => {
     res.render("posts/new");
 });
 router.post('', (req, res) => {
@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', middlewareObj.isLogedin, middlewareObj.IsAdmin, (req, res) => {
     Post.findById(req.params.id, function(err, foundPost) {
         if (err) {
             console.log(err);
@@ -49,7 +49,7 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', middlewareObj.isLogedin, middlewareObj.IsAdmin, (req, res) => {
     var post = req.body.post;
     Post.findByIdAndUpdate(req.params.id, post, { useFindAndModify: false }, function(err, updatedPost) {
         if (err) {
@@ -60,7 +60,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', middlewareObj.isLogedin, middlewareObj.IsAdmin, (req, res) => {
     Post.findByIdAndDelete(req.params.id, { useFindAndModify: false }, function(err, updatedpost) {
         if (err) {
             console.log(err);

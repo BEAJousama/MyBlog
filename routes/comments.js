@@ -1,12 +1,16 @@
+const { isLogedin } = require("../middleware");
+
 var express = require("express"),
     router = express.Router({ mergeParams: true }),
     Comment = require("../models/comment"),
     passport = require("passport"),
-    Post = require("../models/posts");
+    Post = require("../models/posts"),
+    middlewareObj = require("../middleware");
 
 
 
-router.get("/new", function(req, res) {
+
+router.get("/new", middlewareObj.isLogedin, function(req, res) {
     Post.findById(req.params.id, function(err, post) {
         if (err) {
             req.flash("error", err.message);
@@ -16,7 +20,7 @@ router.get("/new", function(req, res) {
         }
     });
 });
-router.post("/", function(req, res) {
+router.post("/", middlewareObj.isLogedin, function(req, res) {
     Post.findById(req.params.id, function(err, post) {
         if (err) {
             console.log(err);
@@ -41,7 +45,7 @@ router.post("/", function(req, res) {
         }
     });
 });
-router.delete("/:comment_id", function(req, res) {
+router.delete("/:comment_id", middlewareObj.CheckCommentOwnership, function(req, res) {
     Comment.findByIdAndDelete(req.params.comment_id, { useFindAndModify: false }, function(err, deletedcamp) {
         if (err) {
             console.log(req.params.comment_id);
@@ -53,7 +57,7 @@ router.delete("/:comment_id", function(req, res) {
         }
     });
 });
-router.get("/:comment_id/edit", function(req, res) {
+router.get("/:comment_id/edit", middlewareObj.CheckCommentOwnership, function(req, res) {
     Post.findById(req.params.id, function(err, foundpost) {
         if (err) {
             console.log(err);
@@ -71,7 +75,7 @@ router.get("/:comment_id/edit", function(req, res) {
         }
     });
 });
-router.put("/:comment_id", function(req, res) {
+router.put("/:comment_id", middlewareObj.CheckCommentOwnership, function(req, res) {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, { useFindAndModify: false }, function(err, updatedcamp) {
         if (err) {
             req.flash("error", err.message);

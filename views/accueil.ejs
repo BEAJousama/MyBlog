@@ -7,6 +7,10 @@
                     <p class="text-center">Login so you can interact with posts and get answers</p>
                     <a href="/login" class="btn btn-dark">Login</a>
                     <%}%>
+
+                        <% if(currentuser && currentuser.role == "administrator"){%>
+                            <a href="/posts/new" class="btn btn-info">Add New Post</a>
+                            <%}%>
             </div>
         </div>
         <div class="text-center heading">
