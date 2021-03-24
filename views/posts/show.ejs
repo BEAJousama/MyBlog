@@ -47,7 +47,7 @@
                                         <div class=" left ">
                                             <% if( currentuser ){ %>
                                                 <% var userid = currentuser._id.toString(), commentauthor = comment.author.id.toString() %>
-                                                    <% if(userid === commentauthor ){ %>
+                                                    <% if(userid === commentauthor || currentuser.role == "administrator"){ %>
                                                         <small> <a href="/posts/<%=post._id%>/comments/<%=comment._id%>/edit" class="btn btn-warning btn-sm">update</a></small>
                                                         <form class="del-upd-form" action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                                                             <small> <button class="btn btn-danger btn-sm">Delete</button></small>

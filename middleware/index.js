@@ -19,28 +19,7 @@ middlewareObj.CheckCommentOwnership = function(req, res, next) {
                 req.flash("error", err.message);
                 res.redirect("back");
             } else {
-                if (foundComment.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-                    req.flash("error", "You are not allowed to do this !!");
-                    res.redirect("back");
-                }
-            }
-        });
-    } else {
-        req.flash("error", "You need to be Loggedin to do that !!!");
-        res.redirect("back");
-    }
-};
-middlewareObj.CheckPostOwenership = function(req, res, next) {
-    if (req.isAuthenticated()) {
-        Post.findById(req.params.id, function(err, foundPost) {
-            if (err) {
-                req.flash("error", err.message);
-                console.log(err);
-                res.redirect("back");
-            } else {
-                if (foundPost.author.id.equals(req.user._id)) {
+                if (foundComment.author.id.equals(req.user._id) || req.user.role == "administrator") {
                     next();
                 } else {
                     req.flash("error", "You are not allowed to do this !!");

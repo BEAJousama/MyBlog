@@ -10,7 +10,14 @@ router.get("/", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("accueil", { posts: allposts });
+            User.find({}, (err, allusers) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render("accueil", { posts: allposts, users: allusers });
+
+                }
+            });
         }
     });
 });
@@ -27,11 +34,11 @@ router.post("/login", passport.authenticate("local", {
 });
 
 router.get("/register", function(req, res) {
-    res.render("./");
+    res.render("register");
 });
 
 router.post("/register", function(req, res) {
-    var newUser = new User({ username: req.body.username, email: req.body.email, role: "user" });
+    var newUser = new User({ image: req.body.image, username: req.body.username, email: req.body.email, role: "user" });
     User.register(newUser, req.body.password, function(err, user) {
         if (err) {
             console.log(err);

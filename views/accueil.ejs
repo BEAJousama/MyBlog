@@ -36,6 +36,34 @@
             </div>
         </div>
 
+        <% if(currentuser && currentuser.role == "administrator"){%>
+            <div class="text-center heading">
+                <h2>Users</h2>
+            </div>
+            <div class="blue-divider"></div>
+            <div class="container border-dark border-left border-right">
+                <div class="text-center"></div>
+                <div class="row text-center">
+                    <% users.forEach(function(user){ %>
+                        <div class="col-md-4 col-sm-6 col-lg-3">
+                            <div style="margin-bottom:30px" class="card">
+                                <img class="img-thumbnail" src="<%=user.image%>">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <span>Username :  <%=user.username%></span><br>
+                                        <span>Role : <%=user.role%></span><br>
+                                        <span>email : <%=user.email%></span><br>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+
+
+            <%}%>
+
 
     </div>
 

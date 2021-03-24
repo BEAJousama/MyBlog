@@ -10,7 +10,8 @@ var userSchema = new mongoose.Schema({
         required: 'Email is required'
     },
     password: String,
-    role: String
+    role: String,
+    image: String
 });
 
 userSchema.plugin(PassportLocalMongoose, { usernameField: 'email' });

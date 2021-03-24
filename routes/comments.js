@@ -1,14 +1,9 @@
-const { isLogedin } = require("../middleware");
-
 var express = require("express"),
     router = express.Router({ mergeParams: true }),
     Comment = require("../models/comment"),
     passport = require("passport"),
     Post = require("../models/posts"),
     middlewareObj = require("../middleware");
-
-
-
 
 router.get("/new", middlewareObj.isLogedin, function(req, res) {
     Post.findById(req.params.id, function(err, post) {
