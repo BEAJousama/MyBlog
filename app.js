@@ -10,7 +10,8 @@ const express = require('express'),
     LocalStrategy = require("passport-local"),
     PassportLocalMongoose = require("passport-local-mongoose"),
     RouterPosts = require("./routes/posts"),
-    RouterIndex = require("./routes/index");
+    RouterIndex = require("./routes/index"),
+    RouterComments = require("./routes/comments");
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -44,6 +45,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use("/", RouterIndex);
 app.use("/posts", RouterPosts);
+app.use("/posts/:id/comments", RouterComments);
 
 
 

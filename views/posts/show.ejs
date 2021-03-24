@@ -19,7 +19,56 @@
                 </div>
                 <% } %>
 
+                    <div style="padding-bottom:100px" class="container  justify-content-center mt-5 border-left border-right bg-light text-center">
+                        <% if(currentuser){ %>
+                            <form action="/posts/<%=post._id%>/comments" , method="POST">
 
+                                <div class="d-flex justify-content-center pt-3 pb-2"> <input type="text" name="comment[text]" placeholder="+ Add a comment" class="form-control addtxt"> </div>
+
+                            </form>
+                            <%}%>
+
+                                <div class=" py-2 px-2">
+                                    <% post.comments.forEach(function(comment){ %>
+
+                                        <div class="container">
+                                            <div class="border-bottom border-light border-3 d-flex flex-row justify-content-between m-3">
+                                                <div id="commentcontainer" class="mt-4">
+                                                    <%= comment.text %>
+                                                </div>
+                                                <div class="font-weight-bold mb-4 border-bottom bordr-light  ">
+                                                    <i class="fad fa-user-circle fa-2x"></i>
+                                                    <%= comment.author.username %>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class=" left ">
+                                            <% if( currentuser ){ %>
+                                                <% var userid = currentuser._id.toString(), commentauthor = comment.author.id.toString() %>
+                                                    <% if(userid === commentauthor ){ %>
+                                                        <small> <a href="/posts/<%=post._id%>/comments/<%=comment._id%>/edit" class="btn btn-warning btn-sm">update</a></small>
+                                                        <form class="del-upd-form" action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                                            <small> <button class="btn btn-danger btn-sm">Delete</button></small>
+                                                        </form>
+                                                        <span class="thumbup btn btn-success">
+                                                            <i class="far fa-thumbs-up"></i> 3 </span>
+                                                        <%}else{%>
+                                                            <span class="thumbup btn btn-success">
+                                                        <i class="far fa-thumbs-up"></i> 3 </span>
+
+                                                            <%}}else{%>
+                                                                <span class="thumbup btn btn-success">
+                                                                        <i class="far fa-thumbs-up"></i> 3 </span>
+                                                                <%}%>
+                                        </div>
+                                        <% }) %>
+                                </div>
+                    </div>
+                    <div class="text-center">
+                        <a style="margin: 0px auto;" href="/posts/<%=post._id%>/comments/new" class="btn btn-info">Add a comment</a>
+                    </div>
         </div>
 
         <a style="margin: 0px auto;" href="/" class="btn btn-dark">Back to posts</a>

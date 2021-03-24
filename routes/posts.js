@@ -17,7 +17,7 @@ router.post('', (req, res) => {
     //     username: req.user.username
     // };
     var newpost = { title: title, image: image, text: text };
-    Post.create(newpost, function(err, newlycreaed) {
+    Post.create(newpost, function(err, newlycreated) {
         if (err) {
             console.log(err);
         } else {
@@ -30,7 +30,7 @@ router.post('', (req, res) => {
     });
 });
 router.get('/:id', (req, res) => {
-    Post.findById(req.params.id, function(err, foundPost) {
+    Post.findById(req.params.id).populate("comments").exec(function(err, foundPost) {
         if (err) {
             console.log(err);
         } else {
@@ -51,7 +51,7 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
     var post = req.body.post;
-    Post.findByIdAndUpdate(req.params.id, post, { useFindAndModify: false }, function(err, updatedCampground) {
+    Post.findByIdAndUpdate(req.params.id, post, { useFindAndModify: false }, function(err, updatedPost) {
         if (err) {
             console.log(err);
         } else {
@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    Post.findByIdAndDelete(req.params.id, { useFindAndModify: false }, function(err, updatedCampground) {
+    Post.findByIdAndDelete(req.params.id, { useFindAndModify: false }, function(err, updatedpost) {
         if (err) {
             console.log(err);
         } else {
