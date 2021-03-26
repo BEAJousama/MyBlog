@@ -3,6 +3,7 @@ var express = require("express"),
     Comment = require("../models/comment"),
     passport = require("passport"),
     Post = require("../models/posts"),
+    User = require("../models/users"),
     middlewareObj = require("../middleware");
 
 router.get("/new", middlewareObj.isLogedin, function(req, res) {
@@ -33,7 +34,17 @@ router.post("/", middlewareObj.isLogedin, function(req, res) {
                     comment.save();
                     post.comments.push(comment);
                     post.save();
-                    res.redirect("/posts/" + post._id);
+                    User.findById(req.user._id, (err, user) => {
+                        if (err) {
+                            console.log(err);
+
+                        } else {
+                            user.comments.push(comment);
+                            user.save();
+                            res.redirect("/posts/" + post._id);
+                        }
+
+                    })
                 }
 
             });

@@ -28,12 +28,12 @@ router.delete('/:user_id', middlewareObj.isLogedin, middlewareObj.IsAdmin, (req,
         if (err) {
             console.log(err);
         } else {
-            Comment.deleteOne({
-                author: { id: new mongoose.mongo.ObjectId(deleteduser._id) }
-            }, { useFindAndModify: false }, function(err) {
-                if (err) console.log(err);
-                res.redirect("/");
+            deleteduser.comments.forEach(comment => {
+                Comment.findByIdAndDelete(comment, { useFindAndModify: false }, function(err) {
+                    if (err) console.log(err);
+                });
             });
+            res.redirect("/");
         }
     });
 });

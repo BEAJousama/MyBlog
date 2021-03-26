@@ -11,7 +11,11 @@ var userSchema = new mongoose.Schema({
     },
     password: String,
     role: String,
-    image: String
+    image: String,
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+    }]
 });
 
 userSchema.plugin(PassportLocalMongoose, { usernameField: 'email' });
