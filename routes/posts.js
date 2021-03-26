@@ -61,7 +61,7 @@ router.put('/:id', middlewareObj.isLogedin, middlewareObj.IsAdmin, (req, res) =>
 });
 
 router.delete('/:id', middlewareObj.isLogedin, middlewareObj.IsAdmin, (req, res) => {
-    Post.findByIdAndDelete(req.params.id, { useFindAndModify: false }, function(err, updatedpost) {
+    Post.findByIdAndDelete(req.params.id, { useFindAndModify: false }, function(err, deletedpost) {
         if (err) {
             console.log(err);
         } else {

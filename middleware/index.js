@@ -36,7 +36,6 @@ middlewareObj.CheckCommentOwnership = function(req, res, next) {
 middlewareObj.IsAdmin = (req, res, next) => {
     if (req.isAuthenticated()) {
         User.findById(req.user._id, function(err, foundUser) {
-            console.log(foundUser);
             if (foundUser.role == "administrator") {
                 next();
             } else {

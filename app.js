@@ -11,6 +11,7 @@ const express = require('express'),
     PassportLocalMongoose = require("passport-local-mongoose"),
     RouterPosts = require("./routes/posts"),
     RouterIndex = require("./routes/index"),
+    RouterUsers = require("./routes/users"),
     RouterComments = require("./routes/comments");
 
 
@@ -46,6 +47,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/", RouterIndex);
 app.use("/posts", RouterPosts);
 app.use("/posts/:id/comments", RouterComments);
+app.use("/users", RouterUsers);
 
 
 

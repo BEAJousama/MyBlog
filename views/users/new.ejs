@@ -1,0 +1,31 @@
+<%- include('../partials/heading') -%>
+    <a style="margin: 0px auto;" href="/" class="btn btn-warning">Back to main page</a>
+
+    <div class="container">
+        <h1 style="text-align: center; margin :50px auto">Add new user
+        </h1>
+        <form action="/users/new" , method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="user[image]" placeholder="picture">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="user[role]" placeholder="role">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="user[username]" placeholder="username">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="user[email]" placeholder="email">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="password" placeholder="password">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+        </form>
+    </div>
+
+
+    <%- include('../partials/footer') -%>
+        </div>

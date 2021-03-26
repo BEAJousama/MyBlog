@@ -43,7 +43,6 @@ router.post("/", middlewareObj.isLogedin, function(req, res) {
 router.delete("/:comment_id", middlewareObj.CheckCommentOwnership, function(req, res) {
     Comment.findByIdAndDelete(req.params.comment_id, { useFindAndModify: false }, function(err, deletedcamp) {
         if (err) {
-            console.log(req.params.comment_id);
             console.log(err);
             req.flash("error", err.message);
             res.redirect("back");
