@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
 var PassportLocalMongoose = require("passport-local-mongoose");
+mongoose.set('useCreateIndex', true);
+
 var userSchema = new mongoose.Schema({
     username: String,
     email: {

@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+mongoose.set('useCreateIndex', true);
 
 var commentSchema = new mongoose.Schema({
 
@@ -8,7 +9,14 @@ var commentSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-        username: String
+        username: {
+            type: mongoose.Schema.Types.String,
+            ref: "User"
+        },
+        image: {
+            type: mongoose.Schema.Types.String,
+            ref: "User"
+        }
     }
 
 });

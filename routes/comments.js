@@ -30,6 +30,7 @@ router.post("/", middlewareObj.isLogedin, function(req, res) {
 
                 } else {
                     comment.author.id = req.user._id;
+                    comment.author.image = req.user.image;
                     comment.author.username = req.user.username;
                     comment.save();
                     post.comments.push(comment);

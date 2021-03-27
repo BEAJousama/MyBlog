@@ -3,7 +3,6 @@ var express = require("express"),
     User = require("../models/users"),
     Comment = require("../models/comment"),
     passport = require("passport"),
-    mongoose = require("mongoose"),
     middlewareObj = require("../middleware");
 
 router.get("/new", middlewareObj.isLogedin, middlewareObj.IsAdmin, function(req, res) {
