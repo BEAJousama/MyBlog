@@ -2,14 +2,14 @@
     <div class="container-fluid page-holder bg-cover">
         <div class="jumbotron">
             <div class="container text-center">
-                <h1 class="text-center">Welcome to B-Blog !</h1>
+                <h1 class="text-center display-4">Welcome to B-Blog !</h1>
                 <% if (!currentuser){ %>
-                    <p class="text-center">Login so you can interact with posts and get answers</p>
+                    <p class="text-center text-info p ">Login so you can interact with posts and get answers</p>
                     <a href="/login" class="btn btn-dark">Login</a>
                     <%}%>
 
                         <% if(currentuser && currentuser.role == "administrator"){%>
-                            <a href="/posts/new" class="btn btn-info">Add New Post</a>
+                            <a href="/posts/new" class="btn btn-dark">Add New Post</a>
                             <%}%>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <h2>POSTS</h2>
         </div>
         <div class="blue-divider"></div>
-        <div class="container border-dark border-left border-right">
+        <div class="container border-secondary  border-left border-right border-2">
             <div class="text-center"></div>
             <div class="row text-center">
                 <% posts.forEach(function(post){ %>
@@ -28,7 +28,7 @@
                                 <h5 class="card-title text-center">
                                     <%=post.title%>
                                 </h5>
-                                <a href="posts/<%=post._id %>" class="btn btn-primary">More Info !</a>
+                                <a href="posts/<%=post._id %>" class="btn btn-dark text-info">More Info !</a>
                             </div>
                         </div>
                     </div>
@@ -37,14 +37,14 @@
         </div>
 
         <% if(currentuser && currentuser.role == "administrator"){%>
-            <div class="text-center heading">
+            <div class="text-center mt-5 heading">
                 <h2>Users</h2>
             </div>
             <div class="blue-divider"></div>
             <div class="text-center">
-                <a href="/users/new" class="btn btn-info mb-5">Add New User</a>
+                <a href="/users/new" class="btn btn-dark mb-5">Add New User</a>
             </div>
-            <div class="container border-dark border-left border-right">
+            <div class="container border-secondary border-left border-right border-2">
                 <div class="text-center"></div>
                 <div class="row text-center">
                     <% users.forEach(function(user){ %>
@@ -58,9 +58,9 @@
                                             <span>Role : <%=user.role%></span><br>
                                             <span>email : <%=user.email%></span><br>
                                         </h5>
-                                        <small> <a href="/users/<%=user._id%>/edit" class="btn btn-warning btn-sm">update</a></small>
+                                        <small> <a href="/users/<%=user._id%>/edit" class="btn btn-light text-warning btn-sm">update</a></small>
                                         <form class="del-upd-form" action="/users/<%=user._id%>?_method=DELETE" method="POST">
-                                            <small> <button class="btn btn-danger btn-sm">Delete</button></small>
+                                            <small> <button class="btn btn-light text-danger btn-sm">Delete</button></small>
                                         </form>
                                     </div>
                                 </div>

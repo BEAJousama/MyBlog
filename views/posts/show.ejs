@@ -1,9 +1,9 @@
 <%- include('../partials/heading') -%>
     <div class="text-center">
-        <div class="container border-dark border-left border-right" style="padding:50px;background: white; border-radius:6px;margin:20px auto">
-            <h2 class="my-3">
-                <%= post.title %>
-            </h2>
+        <h2 class="my-3 display-4 m-5">
+            <%= post.title %>
+        </h2>
+        <div class="container border-secondary border-left border-right border-2 p-5 mx-auto my-5 ">
 
             <img class="img-thumbnail" src="<%=post.image%>" alt="img item">
 
@@ -12,9 +12,9 @@
             </p>
             <%if(currentuser && currentuser.role =="administrator" ){ %>
                 <div class="text-center">
-                    <a style="margin: 0px auto;" href="/posts/<%=post._id%>/edit" class="btn btn-warning">Update</a>
+                    <a style="margin: 0px auto;" href="/posts/<%=post._id%>/edit" class="btn btn-light text-warning">Update</a>
                     <form class="del-form" action="/posts/<%=post._id%>?_method=DELETE" , method="POST">
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-light text-danger">Delete</button>
                     </form>
                 </div>
                 <% } %>
@@ -49,18 +49,18 @@
                                             <% if( currentuser ){ %>
                                                 <% var userid = currentuser._id.toString(), commentauthor = comment.author.id.toString() %>
                                                     <% if(userid === commentauthor || currentuser.role == "administrator"){ %>
-                                                        <small> <a href="/posts/<%=post._id%>/comments/<%=comment._id%>/edit" class="btn btn-warning btn-sm">update</a></small>
+                                                        <small> <a href="/posts/<%=post._id%>/comments/<%=comment._id%>/edit" class="btn btn-light text-warning btn-sm">update</a></small>
                                                         <form class="del-upd-form" action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
-                                                            <small> <button class="btn btn-danger btn-sm">Delete</button></small>
+                                                            <small> <button class="btn btn-light text-danger btn-sm">Delete</button></small>
                                                         </form>
-                                                        <span class="thumbup btn btn-success">
+                                                        <span class="thumbup btn btn-light text-primary">
                                                             <i class="far fa-thumbs-up"></i> 3 </span>
                                                         <%}else{%>
-                                                            <span class="thumbup btn btn-success">
+                                                            <span class="thumbup btn btn-light text-primary">
                                                         <i class="far fa-thumbs-up"></i> 3 </span>
 
                                                             <%}}else{%>
-                                                                <span class="thumbup btn btn-success">
+                                                                <span class="thumbup btn btn-light text-primary">
                                                                         <i class="far fa-thumbs-up"></i> 3 </span>
                                                                 <%}%>
                                         </div>
@@ -68,12 +68,13 @@
                                 </div>
                     </div>
                     <div class="text-center">
-                        <a style="margin: 0px auto;" href="/posts/<%=post._id%>/comments/new" class="btn btn-info">Add a comment</a>
+                        <a style="margin: 0px auto;" href="/posts/<%=post._id%>/comments/new" class="btn btn-dark my-4 ">Add a comment</a>
                     </div>
         </div>
 
-        <a style="margin: 0px auto;" href="/" class="btn btn-dark">Back to posts</a>
-
+        <div class="text-center">
+            <a href="/" class="btn btn-light my-3">Back to main page</a>
+        </div>
     </div>
 
 
