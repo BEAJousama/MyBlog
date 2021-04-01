@@ -44,10 +44,10 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-app.use("/", RouterIndex);
 app.use("/posts", RouterPosts);
 app.use("/posts/:id/comments", RouterComments);
 app.use("/users", RouterUsers);
+app.use("/", RouterIndex);
 
 
 

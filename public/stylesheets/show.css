@@ -7,6 +7,12 @@ li {
     list-style: none;
 }
 
+.jumbotron {
+    background: url("../img/blog-background.png") no-repeat center;
+    width: 90%;
+    height: 300px;
+}
+
 .blue-divider {
     width: 100px;
     height: 2px;
@@ -55,10 +61,6 @@ li {
 #commentcontainer {
     max-width: 400px;
     overflow: -moz-hidden-unscrollable;
-}
-
-.jumbotron {
-    background: url("../img/blog-background.png") no-repeat center;
 }
 
 img {

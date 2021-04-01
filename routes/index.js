@@ -62,5 +62,10 @@ router.get("/portfolio", (req, res) => {
     res.render("portfolio");
 });
 
+router.get("*", (req, res) => {
+    var d = new Date();
+    res.send("Bad request \n " + d);
+
+});
 
 module.exports = router;

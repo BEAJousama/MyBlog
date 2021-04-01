@@ -55,3 +55,15 @@
         </div>
 
     </nav>
+    <div class="container">
+        <%if(error && error.toString().length > 0) {%>
+            <div class="alert alert-danger text-center">
+                <%=error%>
+            </div>
+            <%}%>
+                <%if(success && success.length>0) {%>
+                    <div class="alert alert-success text-center">
+                        <%=success%>
+                    </div>
+                    <%}%>
+    </div>

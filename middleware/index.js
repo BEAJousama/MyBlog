@@ -39,6 +39,7 @@ middlewareObj.IsAdmin = (req, res, next) => {
             if (foundUser.role == "administrator") {
                 next();
             } else {
+                req.flash("error", "Sorry you are not admin !!");
                 res.redirect("back");
             }
         });
