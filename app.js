@@ -16,7 +16,8 @@ const express = require('express'),
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect("mongodb://127.0.0.1:27017/myblog", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect("mongodb://127.0.0.1:27017/myblog", { useNewUrlParser: true, useUnifiedTopology: true });
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
@@ -49,11 +50,6 @@ app.use("/posts/:id/comments", RouterComments);
 app.use("/users", RouterUsers);
 app.use("/", RouterIndex);
 
-
-
-
-
-
-app.listen(3030, () => {
-    console.log("server started");
-})
+app.listen(process.env.PORT || 3000, function() {
+    console.log("server has been started");
+});

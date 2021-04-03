@@ -13,11 +13,12 @@
                             <%}%>
             </div>
         </div>
-        <div class="text-center heading">
-            <h2>POSTS</h2>
-        </div>
-        <div class="blue-divider"></div>
-        <div class="container border-secondary  border-left border-right border-2">
+
+        <div class="container border-secondary  border-left border-right border-2 rounded bg-white">
+            <div class="text-center heading">
+                <h2>POSTS</h2>
+            </div>
+            <div class="blue-divider"></div>
             <div class="text-center"></div>
             <div class="row text-center">
                 <% posts.forEach(function(post){ %>
@@ -42,14 +43,15 @@
         </div>
 
         <% if(currentuser && currentuser.role == "administrator"){%>
-            <div class="text-center mt-5 heading">
-                <h2>Users</h2>
-            </div>
-            <div class="blue-divider"></div>
-            <div class="text-center">
-                <a href="/users/new" class="btn btn-dark mb-5">Add New User</a>
-            </div>
-            <div class="container border-secondary border-left border-right border-2">
+
+            <div class="container my-5 border-secondary border-left border-right  border-2 rounded bg-white">
+                <div class="text-center mt-5 heading">
+                    <h2>Users</h2>
+                </div>
+                <div class="blue-divider"></div>
+                <div class="text-center">
+                    <a href="/users/new" class="btn btn-dark mb-5">Add New User</a>
+                </div>
                 <div class="text-center"></div>
                 <div class="row text-center">
                     <% users.forEach(function(user){ %>

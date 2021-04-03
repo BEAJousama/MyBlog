@@ -296,14 +296,14 @@ section .heading h2 {
     color: #fff;
 }
 
-#portfolio .img-thumbnail {
+#portfolio .img-fluid {
     width: 100%;
     height: 100%;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
 }
 
-#portfolio .img-thumbnail:hover {
+#portfolio .img-fluid:hover {
     filter: none;
     -webkit-filter: none;
 }
@@ -352,6 +352,13 @@ section .heading h2 {
 #mycarousel .carousel-item h3 {
     color: #059fce;
     font-style: italic;
+}
+
+
+/*CONTACT*/
+
+#contact .heading h2 {
+    color: #059fce;
 }
 
 
