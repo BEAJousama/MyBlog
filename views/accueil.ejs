@@ -17,30 +17,31 @@
                 <h2>POSTS</h2>
             </div>
             <div class="blue-divider"></div>
-            <div class="text-center"></div>
-            <% if(currentuser && currentuser.role == "administrator"){%>
-                <a href="/posts/new" class="btn btn-dark">Add New Post</a>
-                <%}%>
-                    <div class="row text-center">
-                        <% posts.forEach(function(post){ %>
-                            <div class="col-md-4 col-sm-6 col-lg-3">
-                                <div style="margin-bottom:30px" class="card">
-                                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                                        <img src="<%=post.image%>" class="card-img-top" />
-                                        <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title text-center">
-                                            <%=post.title%>
-                                        </h5>
-                                        <a href="posts/<%=post._id %>" class="btn btn-dark text-info">More Info !</a>
-                                    </div>
-                                </div>
+            <div class="text-center">
+                <% if(currentuser && currentuser.role == "administrator"){%>
+                    <a href="/posts/new" class="btn btn-dark">Add New Post</a>
+                    <%}%>
+            </div>
+            <div class="row text-center">
+                <% posts.forEach(function(post){ %>
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <div style="margin-bottom:30px" class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="<%=post.image%>" class="card-img-top" />
+                                <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                </a>
                             </div>
-                            <% }); %>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">
+                                    <%=post.title%>
+                                </h5>
+                                <a href="posts/<%=post._id %>" class="btn btn-dark text-info">More Info !</a>
+                            </div>
+                        </div>
                     </div>
+                    <% }); %>
+            </div>
         </div>
 
         <% if(currentuser && currentuser.role == "administrator"){%>
