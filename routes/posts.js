@@ -25,7 +25,7 @@ router.post('', (req, res) => {
             // newlycreaed.author.id = req.user._id;
             // newlycreaed.author.username = req.user.username;
             // newlycreaed.save();
-            res.redirect("");
+            res.redirect("/..");
         }
     });
 });
@@ -55,7 +55,7 @@ router.put('/:id', middlewareObj.isLogedin, middlewareObj.IsAdmin, (req, res) =>
         if (err) {
             console.log(err);
         } else {
-            res.redirect("/" + req.params.id);
+            res.redirect("/posts/" + req.params.id);
         }
     });
 });

@@ -17,7 +17,7 @@ const express = require('express'),
 
 app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true });
-//mongoose.connect("mongodb://127.0.0.1:27017/myblog", { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect("mongodb://127.0.0.1:27017/myblog", { useNewUrlParser: true, useUnifiedTopology: true });
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
